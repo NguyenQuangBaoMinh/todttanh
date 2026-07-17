@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gửi Thuý Anh ❤️</title>
+    <style>
+        /* Cài đặt nền tối lãng mạn */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: radial-gradient(circle, #3a0000 0%, #000000 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            z-index: 10;
+        }
+
+        /* Tạo hình trái tim lớn */
+        .heart {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            background-color: #ff2a5f;
+            transform: rotate(-45deg);
+            margin: 0 auto 60px auto;
+            box-shadow: 0 0 40px #ff2a5f;
+            animation: heartbeat 1.2s infinite;
+        }
+
+        /* Dùng CSS để bo tròn 2 bên tạo thành trái tim */
+        .heart::before,
+        .heart::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: #ff2a5f;
+            border-radius: 50%;
+            box-shadow: 0 0 40px #ff2a5f;
+        }
+
+        .heart::before {
+            top: -50px;
+            left: 0;
+        }
+
+        .heart::after {
+            top: 0;
+            left: 50px;
+        }
+
+        /* Hiệu ứng nhịp đập */
+        @keyframes heartbeat {
+            0% {
+                transform: rotate(-45deg) scale(1);
+            }
+
+            14% {
+                transform: rotate(-45deg) scale(1.3);
+            }
+
+            28% {
+                transform: rotate(-45deg) scale(1);
+            }
+
+            42% {
+                transform: rotate(-45deg) scale(1.3);
+            }
+
+            70% {
+                transform: rotate(-45deg) scale(1);
+            }
+        }
+
+        /* Tạo kiểu cho dòng chữ */
+        .message {
+            color: #ffffff;
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-top: 30px;
+            text-shadow: 0 0 10px #ff2a5f, 0 0 20px #ff2a5f, 0 0 40px #ff2a5f;
+            animation: fadeIn 3s ease-in-out;
+            letter-spacing: 2px;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hiệu ứng mưa trái tim */
+        .falling-heart {
+            position: fixed;
+            top: -5vh;
+            color: #ff2a5f;
+            font-size: 1.5rem;
+            animation: fall linear forwards;
+            opacity: 0.7;
+            text-shadow: 0 0 5px #ff2a5f;
+            pointer-events: none;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(105vh);
+            }
+        }
+
+        /* Thích ứng với màn hình điện thoại */
+        @media (max-width: 600px) {
+            .message {
+                font-size: 1.8rem;
+                padding: 0 15px;
+            }
+
+            .heart {
+                width: 80px;
+                height: 80px;
+            }
+
+            .heart::before,
+            .heart::after {
+                width: 80px;
+                height: 80px;
+            }
+
+            .heart::before {
+                top: -40px;
+            }
+
+            .heart::after {
+                left: 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Trái tim ở giữa -->
+        <div class="heart"></div>
+        <!-- Lời nhắn -->
+        <div class="message">A nhớ babe Thuý Anh nhiều lắm ❤️</div>
+    </div>
+
+    <!-- JavaScript để tạo mưa trái tim -->
+    <script>
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('falling-heart');
+            heart.innerText = '❤';
+
+            // Random vị trí xuất hiện theo chiều ngang
+            heart.style.left = Math.random() * 100 + 'vw';
+
+            // Random thời gian rơi và kích thước
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+            heart.style.fontSize = Math.random() * 1.5 + 0.5 + 'rem';
+
+            document.body.appendChild(heart);
+
+            // Xoá trái tim sau khi rơi xong để không bị nặng máy
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        // Tạo ra trái tim liên tục mỗi 300 mili-giây
+        setInterval(createHeart, 300);
+    </script>
+
+</body>
+
+</html>
